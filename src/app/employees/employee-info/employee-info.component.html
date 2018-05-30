@@ -1,0 +1,11 @@
+<li class="list-group-item" [ngClass]="{'list-group-item-success' : isSelected }">
+
+  {{ thisEmployee.name }} - {{ thisEmployee.age }} years old {{ thisEmployee.gender ? 'Male' : 'Female' }}
+
+  <div style="float: right;">
+    <a href="#" (click)="onSelect()">Select</a> |
+    <a href='#' (click)="onEdit()">Edit</a> |
+    <a href='#' (click)="onDelete()">Delete</a>
+  </div>
+
+</li>

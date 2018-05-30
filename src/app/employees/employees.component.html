@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-md-6">
+
+    <div class="row">
+      <div class="col-md-7">
+        <h3>Current Employees</h3>
+      </div>
+      <div class="col-md-5 pull-right">
+        <button (click)="showAddNewForm()" *ngIf="!allowAddNewEmployee" class="btn btn-primary" [disabled]="employees.length >= 4">Add New</button>
+        <button (click)="onAddNewEmployee()" *ngIf="allowAddNewEmployee" class="btn btn-primary">Save</button>
+        &nbsp;
+        <button (click)="onCancel()" *ngIf="allowAddNewEmployee" class="btn cancel">Cancel</button>
+      </div>
+    </div>
+
+    <ng-template [ngIf]="allowAddNewEmployee">
+
+      <div class="row col-md-12">
+        <div class="form-horizantal">
+          <div class="form-group">
+            <label for="name" class="control-label">Employee Name</label>
+            <input type="text" class="form-control" name="name" [(ngModel)]="new_employee.name">
+          </div>
+          <div class="form-group">
+            <label for="age">Employee Age</label>
+            <input type="number" class="form-control" name="age" [(ngModel)]="new_employee.age">
+          </div>
+          <div class="form-group">
+            <label for="gender">Employee gender</label>
+            <input type="text" class="form-control" name="gender" [(ngModel)]="new_employee.gender">
+          </div>
+        </div>
+      </div>
+
+    </ng-template>
+
+    <hr>
+
+    <ul class="list-group">
+      <app-employee-info *ngFor="let emp of employees" [Employee]="emp" (onEmployeeAction)="employeeActionHandler($event)" [isSelected]="emp === selectedEmployee"></app-employee-info>
+
+    </ul>
+
+  </div>
+  <div class="col-md-6">
+    <app-employee-detail
+      *ngIf="selectedEmployee != null"
+      [Employee]="selectedEmployee"
+      [action]="selectedAction"></app-employee-detail>
+  </div>
+</div>

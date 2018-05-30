@@ -1,0 +1,27 @@
+<div class="row" *ngIf="currentEmployee != null">
+  <div class="col-md-7">
+    <h3>{{ action === "select" ? "View" : "Change" }} {{ currentEmployee.name |titlecase }}'s Info.</h3>
+  </div>
+  <div class="col-md-5">
+    <button class="btn btn-primary">Save changes</button>
+    <button class="btn" (cancel)="currentEmployee = null;">Cancel</button>
+  </div>
+</div>
+<hr>
+
+<div class="row">
+  <div class="form-horizantal">
+    <div class="form-group">
+      <label for="name" class="control-label">Employee Name</label>
+      <input type="text" class="form-control" name="name" [(ngModel)]="currentEmployee.name" [disabled]="action === 'select'">
+    </div>
+    <div class="form-group">
+      <label for="age">Employee Age</label>
+      <input type="number" class="form-control" name="age" [(ngModel)]="currentEmployee.age" [disabled]="action === 'select'">
+    </div>
+    <div class="form-group">
+      <label for="gender">Employee gender</label>
+      <input type="text" class="form-control" name="gender" [(ngModel)]="currentEmployee.gender" [disabled]="action === 'select'">
+    </div>
+  </div>
+</div>

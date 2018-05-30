@@ -1,0 +1,7 @@
+button {
+    float: right;
+}
+
+button.cancel {
+    margin-right: 10px;
+}
